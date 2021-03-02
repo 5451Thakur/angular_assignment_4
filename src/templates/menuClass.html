@@ -1,0 +1,11 @@
+
+<table class="table" style="width:60%;">
+  <tr>
+    <th></th>
+    <th>Menu Categories</th>
+  </tr>
+  <tr ng-repeat="i in $ctrl.items">
+    <td >{{i.short_name}}</td>
+    <td ><a ui-sref="categoryItems({categoryId: i.short_name})">{{i.name}}</a></td>
+  </tr>
+</table>

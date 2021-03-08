@@ -17,10 +17,18 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     url: '/',
     templateUrl: 'src/templates/home.template.html'
   })
+
   .state('categories', {
-    url: '/categories',
-    templateUrl: 'src/templates/categories.template.html',
-    controller: 'MenudataController as menu'
+  url: '/categories',
+  templateUrl: 'src/templates/categories.template.html',
+  controller: 'MenudataController as menu',
+  resolve: {
+    cats: ['MenudataService', function(MenudataService){
+      return MenudataService.getAllCategories().then(function(response){
+        return response.data;
+      })
+    }]
+  }
   })
 
   .state('categoryItems', {
